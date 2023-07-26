@@ -41,8 +41,6 @@ void selection_sort(int *array, size_t size)
 				swap = true;
 			}
 		}
-		if (i == 0 && swap == false)
-			return;
 		if (i != size - 1 && swap == true)
 		{
 			swap_ints(&array[i], &array[in_place]);
