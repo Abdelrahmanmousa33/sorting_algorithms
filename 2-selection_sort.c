@@ -27,7 +27,7 @@ void selection_sort(int *array, size_t size)
 	int tmp = array[0];
 	bool swap = false;
 
-	if (array = NULL || size == 0)
+	if (array == NULL || size == 0)
 		return;
 	for (i = 0; i < size; i++)
 	{
