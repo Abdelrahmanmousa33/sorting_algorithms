@@ -1,8 +1,6 @@
 #include "sort.h"
 
 void swap_ints(int *a, int *b);
-void quick_sort(int *array, size_t size);
-void lomuto_part(int *array, int start, int end, size_t size);
 /**
  * swap_ints - Swap two integers in an array.
  * @a: The first integer to swap.
@@ -17,10 +15,26 @@ void swap_ints(int *a, int *b)
 	*a = *b;
 	*b = tmp;
 }
+/**
+ * quick_sort - Sort an array of integers in ascending
+ *              order using the quicksort algorithm.
+ * @array: An array of integers.
+ * @size: The size of the array.
+ */
 void quick_sort(int *array, size_t size)
 {
+	if (array == NULL || size < 2)
+		return;
+
 	lomuto_part(array, 0, size - 1, size);
 }
+/**
+ * lomuto_part - divide an array according to lomuto scheme
+ * @array: The array of integers.
+ * @size: The size of the array.
+ * @start: The starting index of the subset to order.
+ * @end: The ending index of the subset to order.
+ */
 
 void lomuto_part(int *array, int start, int end, size_t size)
 {
@@ -38,11 +52,11 @@ void lomuto_part(int *array, int start, int end, size_t size)
 		if (array[right] <= pivot)
 		{
 			swap_ints(&array[right], &array[left]);
-			print_array(array, size);
 			left++;
 		}
 		right++;
 	}
+	print_array(array, size);
 	lomuto_part(array, 0, left - 2, size);
 	lomuto_part(array, left, end, size);
 }
