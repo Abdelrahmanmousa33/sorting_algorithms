@@ -41,7 +41,7 @@ void lomuto_part(int *array, int start, int end, size_t size)
 	int left = start;
 	int right = start;
 	int pivot;
-
+	bool swap = false;
 
 	if (start >= end)
 		return;
@@ -53,10 +53,13 @@ void lomuto_part(int *array, int start, int end, size_t size)
 		{
 			swap_ints(&array[right], &array[left]);
 			left++;
+			if (right + 1 > end)
+				swap = true;
 		}
 		right++;
 	}
-	print_array(array, size);
+	if (swap == true)
+		print_array(array, size);
 	lomuto_part(array, 0, left - 2, size);
 	lomuto_part(array, left, end, size);
 }
